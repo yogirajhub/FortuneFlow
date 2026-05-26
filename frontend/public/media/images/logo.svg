@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 160" width="1000" height="160">
+
+  <!-- Vertical pole -->
+  <rect x="20" y="12" width="15" height="136" rx="6" fill="#4286C8"/>
+
+  <!-- Flag banner -->
+  <path d="M35 12 L98 12 Q120 12 120 34 L120 64 Q120 84 98 84 L35 84 Z" fill="#4286C8"/>
+
+  <!-- Wave arc -->
+  <path d="M35 93 Q62 93 82 109 Q102 125 95 141 Q91 151 74 151 L51 151 Q37 151 35 139 Z" fill="#4286C8"/>
+
+  <!-- Wordmark: NO textLength, large safe canvas, font-size 76 -->
+  <text
+    x="152"
+    y="110"
+    font-family="'Arial Black', 'Franklin Gothic Heavy', 'Impact', sans-serif"
+    font-size="76"
+    font-weight="900"
+    fill="#4286C8"
+    letter-spacing="2"
+  >FORTUNEFLOW</text>
+
+</svg>

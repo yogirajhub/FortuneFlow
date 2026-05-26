@@ -4,19 +4,30 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const cookieParser = require("cookie-parser");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const { HoldingsModel } = require("./model/HoldingsModel");
-
 const { PositionsModel } = require("./model/PositionsModel");
 const { OrdersModel } = require("./model/OrdersModel");
+const { UserModel } = require("./model/UserModel");
 
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
+const JWT_SECRET = process.env.JWT_SECRET || process.env.SESSION_SECRET || "fortuneflow_secret";
+const FRONTEND_ORIGINS = ["http://localhost:3001", "http://localhost:3000"];
 
 const app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: FRONTEND_ORIGINS,
+    credentials: true,
+  })
+);
 app.use(bodyParser.json());
+app.use(cookieParser());
 
 // app.get("/addHoldings", async (req, res) => {
 //   let tempHoldings = [
@@ -205,9 +216,119 @@ app.post("/newOrder", async (req, res) => {
     mode: req.body.mode,
   });
 
-  newOrder.save();
+  await newOrder.save();
 
   res.send("Order saved!");
+});
+
+function createAuthToken(user) {
+  return jwt.sign(
+    { id: user._id, email: user.email },
+    JWT_SECRET,
+    { expiresIn: "7d" }
+  );
+}
+
+function authMiddleware(req, res, next) {
+  const token = req.cookies?.auth_token;
+
+  if (!token) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+
+  try {
+    const payload = jwt.verify(token, JWT_SECRET);
+    req.user = payload;
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid or expired token" });
+  }
+}
+
+app.post("/signup", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required." });
+  }
+
+  const existingUser = await UserModel.findOne({ email: email.toLowerCase().trim() });
+  if (existingUser) {
+    return res.status(409).json({ message: "A user with that email already exists." });
+  }
+
+  const hashedPassword = await bcrypt.hash(password, 10);
+  const user = new UserModel({
+    email: email.toLowerCase().trim(),
+    password: hashedPassword,
+  });
+
+  await user.save();
+
+  const token = createAuthToken(user);
+  res.cookie("auth_token", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+
+  res.json({
+    user: {
+      id: user._id,
+      email: user.email,
+    },
+  });
+});
+
+app.post("/login", async (req, res) => {
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    return res.status(400).json({ message: "Email and password are required." });
+  }
+
+  const user = await UserModel.findOne({ email: email.toLowerCase().trim() });
+  if (!user) {
+    return res.status(401).json({ message: "Invalid email or password." });
+  }
+
+  const passwordMatches = await bcrypt.compare(password, user.password);
+  if (!passwordMatches) {
+    return res.status(401).json({ message: "Invalid email or password." });
+  }
+
+  const token = createAuthToken(user);
+  res.cookie("auth_token", token, {
+    httpOnly: true,
+    sameSite: "lax",
+    maxAge: 7 * 24 * 60 * 60 * 1000,
+  });
+
+  res.json({
+    user: {
+      id: user._id,
+      email: user.email,
+    },
+  });
+});
+
+app.post("/logout", (req, res) => {
+  res.clearCookie("auth_token", { httpOnly: true, sameSite: "lax" });
+  res.json({ message: "Logged out" });
+});
+
+app.get("/profile", authMiddleware, async (req, res) => {
+  const user = await UserModel.findById(req.user.id).select("email createdAt");
+  if (!user) {
+    return res.status(404).json({ message: "User not found." });
+  }
+
+  res.json({
+    user: {
+      id: user._id,
+      email: user.email,
+    },
+  });
 });
 
 app.listen(PORT, () => {
