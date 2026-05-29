@@ -16,7 +16,12 @@ const { UserModel } = require("./model/UserModel");
 const PORT = process.env.PORT || 3002;
 const uri = process.env.MONGO_URL;
 const JWT_SECRET = process.env.JWT_SECRET || process.env.SESSION_SECRET || "fortuneflow_secret";
-const FRONTEND_ORIGINS = ["http://localhost:3001", "http://localhost:3000"];
+const FRONTEND_ORIGINS = [
+  "http://localhost:3000",
+  "http://localhost:3001",
+  "https://fortune-flow-rho.vercel.app",        // dashboard
+  "https://fortune-flow-frontend.vercel.app",   // frontend
+];
 
 // ── Validate required env vars early ──────────────────────────────────────────
 if (!uri) {
