@@ -1,5 +1,10 @@
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
+  overflow-x: hidden;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -12,29 +17,170 @@ code {
     monospace;
 }
 
-.nav-link{
-  margin-left: 40px;
+/* ── Global responsive safety net ──────────────────────────────────────── */
+/* Prevents images from overflowing their container / causing horizontal
+   scroll on small screens, regardless of any inline width set on them. */
+img {
+  max-width: 100%;
+  height: auto;
 }
 
-#supportHero{
+/* ── Navbar ─────────────────────────────────────────────────────────────── */
+.ff-navbar {
+  min-height: 64px;
+}
+
+.ff-navbar-brand {
+  margin-right: 0;
+}
+
+.ff-navbar-logo {
+  height: 34px;
+  width: auto;
+  display: block;
+}
+
+@media (min-width: 992px) {
+  .ff-navbar-logo {
+    height: 38px;
+  }
+}
+
+.ff-navbar-toggler {
+  border: none;
+  padding: 0.25rem 0.5rem;
+}
+
+.ff-navbar-toggler:focus {
+  box-shadow: none;
+}
+
+.ff-nav-link {
+  padding: 0.6rem 1rem;
+  font-weight: 500;
+  color: #212529;
+}
+
+.ff-nav-link.active,
+.ff-nav-link:hover {
+  color: #0d6efd;
+}
+
+/* .ff-navbar-auth {
+  display: flex;
+  align-items: left;
+  flex-wrap: wrap;
+} */
+
+.ff-navbar-auth {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.ff-signup-btn {
+  border-radius: 6px;
+  padding: 0.45rem 1.1rem !important;
+  background-color: #4174b4;
+  color: #fff !important;
+}
+
+.ff-signup-btn:hover {
+  background-color: #3a7ccd;
+}
+
+@media (max-width: 991.98px) {
+  .ff-navbar-collapse {
+    border-top: 1px solid #eee;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+  }
+
+  .ff-nav-link {
+    padding: 0.65rem 0.25rem;
+  }
+
+  .ff-navbar-auth {
+    border-top: 1px solid #eee;
+    margin-top: 0.25rem;
+    padding-top: 0.5rem;
+  }
+
+  .ff-signup-btn {
+    display: inline-block;
+    margin-top: 0.25rem;
+  }
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────── */
+.ff-footer-logo {
+  height: 40px;
+  width: auto;
+  max-width: 180px;
+}
+
+.ff-footer-col {
+  margin-bottom: 2rem;
+}
+
+.ff-footer-col a {
+  color: #495057;
+  display: inline-block;
+}
+
+/* ── Shared CTA button ──────────────────────────────────────────────────── */
+.ff-cta-btn {
+  width: auto;
+  min-width: 200px;
+  max-width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+/* ── Support page ──────────────────────────────────────────────────────── */
+#supportHero {
   background-color: rgb(56, 126, 209);
   color: white;
 }
 
-#supportHero a{
+#supportHero a {
   color: white;
 }
 
-#supportWrapper{
+#supportWrapper {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 150px;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 1rem;
 }
 
-#supportHero input{
-  padding: 20px 50px;
+@media (min-width: 768px) {
+  #supportWrapper {
+    margin: 0 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  #supportWrapper {
+    margin: 0 150px;
+  }
+}
+
+#supportHero input {
+  padding: 12px 20px;
   width: 100%;
-  font-size: 20px;
+  font-size: 16px;
   border-radius: 10px;
   border: none;
+}
+
+@media (min-width: 768px) {
+  #supportHero input {
+    padding: 20px 50px;
+    font-size: 20px;
+  }
 }

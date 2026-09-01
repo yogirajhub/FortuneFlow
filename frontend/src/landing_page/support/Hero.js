@@ -7,19 +7,21 @@ function Hero() {
         <h4>Support Portal</h4>
         <a href="#track-tickets">Track Tickets</a>
       </div>
-      <div className="row p-5 m-3">
-        <div className="col-6 p-3">
+      <div className="row p-2 p-md-5 m-0 m-md-3">
+        <div className="col-12 col-lg-6 p-3">
           <h1 className="fs-3">
             Search for an answer or browse help topics to create a ticket
           </h1>
           <input placeholder="Eg. how do I activate F&O" />
           <br />
-          <a href="#track-opening">Track account opening</a>
-          <a href="#track-segment">Track segment activation</a>
-          <a href="#margins">Intraday margins</a>
-          <a href="#kite-manual">Kite user manual</a>
+          <div className="d-flex flex-wrap gap-3 mt-3">
+            <a href="#track-opening">Track account opening</a>
+            <a href="#track-segment">Track segment activation</a>
+            <a href="#margins">Intraday margins</a>
+            <a href="#kite-manual">Kite user manual</a>
+          </div>
         </div>
-        <div className="col-6 p-3">
+        <div className="col-12 col-lg-6 p-3">
           <h1 className="fs-3">Featured</h1>
           <ol>
             <li>

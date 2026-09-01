@@ -11,16 +11,16 @@ function Team() {
         className="row p-3 text-muted"
         style={{ lineHeight: "1.8", fontSize: "1.2em" }}
       >
-        <div className="col-6 p-3 text-center">
+        <div className="col-12 col-md-6 p-3 text-center">
           <img
             src="media/images/yogirajGautam.png"
-            style={{ borderRadius: "100%", width: "50%" }}
+            style={{ borderRadius: "100%", width: "100%", maxWidth: "220px" }}
             alt="Yogiraj Gautam, Founder"
           />
-          <h4 className="mt-5">Yogiraj Gautam</h4>
+          <h4 className="mt-4">Yogiraj Gautam</h4>
           <h6>Founder</h6>
         </div>
-        <div className="col-6 p-3">
+        <div className="col-12 col-md-6 p-3">
           <p>
             Yogiraj founded FortuneFlow in 2026 with one clear mission,to solve the real trading challenges he had battled for years.
              What started as frustration with a broken system became a platform that is now reshaping how India experiences modern broking.
@@ -40,16 +40,16 @@ function Team() {
         className="row p-3 text-muted"
         style={{ lineHeight: "1.8", fontSize: "1.2em" }}
       >
-        <div className="col-6 p-3 text-center">
+        <div className="col-12 col-md-6 p-3 text-center">
           <img
             src="media/images/vikalp_official.png"
-            style={{ borderRadius: "100%", width: "50%" }}
+            style={{ borderRadius: "100%", width: "100%", maxWidth: "220px" }}
             alt="Vikalp, Technology Lead"
           />
-          <h4 className="mt-5">Vikalp</h4>
+          <h4 className="mt-4">Vikalp</h4>
           <h6>Technology Lead</h6>
         </div>
-        <div className="col-6 p-3">
+        <div className="col-12 col-md-6 p-3">
           <p>
             Vikalp leads the technology and infrastructure at FortuneFlow with
             a focus on building scalable and secure trading systems. With a

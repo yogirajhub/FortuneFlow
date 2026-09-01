@@ -5,14 +5,14 @@ function Footer() {
     <footer style={{ backgroundColor: "rgb(250, 250, 250)" }}>
       <div className="container border-top mt-5">
         <div className="row mt-5">
-          <div className="col">
-            <img src="media/images/logo.svg" style={{ width: "75%" }} alt="FortuneFlow Logo" />
+          <div className="col-12 col-sm-6 col-lg-3 ff-footer-col">
+            <img src="media/images/logo.svg" className="ff-footer-logo mb-2" alt="FortuneFlow Logo" />
             <p>
               &copy; 2026, FortuneFlow Broking Ltd. All rights reserved.
             </p>
           </div>
-          <div className="col">
-            <p>Company</p>
+          <div className="col-12 col-sm-6 col-lg-3 ff-footer-col">
+            <p className="fw-bold">Company</p>
             <a href="">About</a>
             <br />
             <a href="">Products</a>
@@ -30,8 +30,8 @@ function Footer() {
             <a href="">FortuneFlow cares (CSR)</a>
             <br />
           </div>
-          <div className="col">
-            <p>Support</p>
+          <div className="col-12 col-sm-6 col-lg-3 ff-footer-col">
+            <p className="fw-bold">Support</p>
             <a href="">Contact</a>
             <br />
             <a href="">Support portal</a>
@@ -43,8 +43,8 @@ function Footer() {
             <a href="">Downloads & resources</a>
             <br />
           </div>
-          <div className="col">
-            <p>Account</p>
+          <div className="col-12 col-sm-6 col-lg-3 ff-footer-col">
+            <p className="fw-bold">Account</p>
             <a href="">Open an account</a>
             <br />
             <a href="">Fund transfer</a>

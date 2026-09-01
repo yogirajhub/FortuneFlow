@@ -13,33 +13,32 @@ function Universe() {
           partner platforms
         </p>
 
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
-        <div className="col-4 p-3 mt-5">
+        <div className="col-12 col-sm-6 col-lg-4 p-3 mt-4">
           <img src="media/images/smallcaseLogo.png" alt="Smallcase - Thematic investment platform" />
           <p className="text-small text-muted">Thematic investment platform</p>
         </div>
         <button
-          className="p-2 btn btn-primary fs-5 mb-5"
-          style={{ width: "20%", margin: "0 auto" }}
+          className="p-2 btn btn-primary fs-5 mb-5 mt-4 ff-cta-btn"
           onClick={() => navigate("/signup")}
         >
           Signup Now

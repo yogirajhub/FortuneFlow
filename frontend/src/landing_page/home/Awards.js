@@ -3,11 +3,11 @@ import React from "react";
 function Awards() {
   return (
     <div className="container mt-5">
-      <div className="row">
-        <div className="col-6 p-5">
+      <div className="row align-items-center">
+        <div className="col-12 col-lg-6 p-3 p-md-5 text-center text-lg-start">
           <img src="media/images/largestBroker.svg" alt="Largest broker in India" />
         </div>
-        <div className="col-6 p-5 mt-5">
+        <div className="col-12 col-lg-6 p-3 p-md-5">
           <h1>Largest stock broker in India</h1>
           <p className="mb-5">
             2+ million FortuneFlow clients contribute to over 15% of all retail
